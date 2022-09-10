@@ -1,2 +1,2 @@
 # LeetCode
-My LeetCode profile https://leetcode.com/artoflory/
+My profile https://leetcode.com/artoflory/

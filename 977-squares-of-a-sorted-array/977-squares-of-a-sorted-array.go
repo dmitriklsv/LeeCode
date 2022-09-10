@@ -1,8 +1,15 @@
 func sortedSquares(nums []int) []int {
-    arr := make([]int,len(nums))
-    for i, nb := range nums {
-        arr[i]=nb*nb
+    var res []int
+    for _, nb := range nums {
+        res = append(res,nb*nb)
     }
-    sort.Ints(arr)
-    return arr
+    
+    for i:=0; i< len(res)-1; i++ {
+        for j:=0; j<len(res)-1; j++ {
+            if res[j] > res[j+1] {
+                res[j],res[j+1] = res[j+1],res[j]
+            }
+        }
+    }
+        return res
 }

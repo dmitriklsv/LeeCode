@@ -1,7 +1,7 @@
 func isHappy(n int) bool {
     table:=make(map[int]bool)
     for n != 1 {
-        if _,ok := table[n]; ok {
+        if table[n] {
             return false
         }
         table[n]=true

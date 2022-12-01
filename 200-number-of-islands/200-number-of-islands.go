@@ -1,25 +1,26 @@
 func numIslands(grid [][]byte) int {
-    numIslands:=0
+    var c int
     for i:=0;i<len(grid);i++{
-        for j:=0;j<len(grid[i]);j++{
-            if grid[i][j]=='1' {
-                numIslands++
-                dfs(&grid,i,j)
+        for j:=0;j<len(grid[i]);j++ {
+            if grid[i][j] == '1' {
+                bfs(&grid,i,j)
+                c++
             }
         }
     }
     
-    return numIslands
+    return c
 }
 
-func dfs(grid *[][]byte, row, col int) {
-    if row<0 || col<0 || row>=len(*grid) || col>=len((*grid)[row]) || (*grid)[row][col]=='0'{
+func bfs(grid *[][]byte,i,j int) {
+    if  i < 0 || i > len(*grid)-1 || j > len((*grid)[i])-1 || j < 0 || (*grid)[i][j] != '1' {
         return
     }
     
-    (*grid)[row][col]='0'
-    dfs(grid,row-1,col)
-    dfs(grid,row,col-1)
-    dfs(grid,row+1,col)
-    dfs(grid,row,col+1)
+    (*grid)[i][j] = 'x'
+    
+    bfs(grid,i,j+1)
+    bfs(grid,i+1,j)
+    bfs(grid,i,j-1)
+    bfs(grid,i-1,j)
 }
